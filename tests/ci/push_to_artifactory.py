@@ -256,12 +256,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "-n",
         "--no-artifactory",
-        action="store_true",
+        action="store_false",
+        dest="artifactory",
+        default=argparse.SUPPRESS,
         help="do not push packages to artifactory",
     )
     parser.add_argument(
         "--no-force-download",
-        action="store_true",
+        action="store_false",
+        dest="force_download",
+        default=argparse.SUPPRESS,
         help="do not download packages again if they exist already",
     )
 
@@ -303,10 +307,10 @@ def main():
         args.commit,
         args.check_name,
         args.release.version,
-        not args.no_force_download,
+        args.force_download,
     )
     art_client = None
-    if not args.no_artifactory:
+    if args.artifactory:
         art_client = Artifactory(args.artifactory_url, args.release.type)
 
     if args.deb:
