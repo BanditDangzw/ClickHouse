@@ -253,6 +253,7 @@ def parse_args() -> argparse.Namespace:
         default="https://clickhousedb.jfrog.io/artifactory",
         help="SaaS Artifactory url",
     )
+    parser.add_argument("--artifactory", default=True, help=argparse.SUPPRESS)
     parser.add_argument(
         "-n",
         "--no-artifactory",
@@ -261,6 +262,7 @@ def parse_args() -> argparse.Namespace:
         default=argparse.SUPPRESS,
         help="do not push packages to artifactory",
     )
+    parser.add_argument("--force-download", default=True, help=argparse.SUPPRESS)
     parser.add_argument(
         "--no-force-download",
         action="store_false",
