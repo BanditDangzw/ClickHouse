@@ -44,6 +44,7 @@ def parse_args() -> argparse.Namespace:
         default=RUNNER_TEMP,
         help="path to changed_images_*.json files",
     )
+    parser.add_argument("--reports", default=True, help=argparse.SUPPRESS)
     parser.add_argument(
         "--no-reports",
         action="store_false",
@@ -51,6 +52,7 @@ def parse_args() -> argparse.Namespace:
         default=argparse.SUPPRESS,
         help="don't push reports to S3 and github",
     )
+    parser.add_argument("--push", default=True, help=argparse.SUPPRESS)
     parser.add_argument(
         "--no-push-images",
         action="store_false",

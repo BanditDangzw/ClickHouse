@@ -349,6 +349,7 @@ def parse_args() -> argparse.Namespace:
         help="list of image paths to build instead of using pr_info + diff URL, "
         "e.g. 'docker/packager/binary'",
     )
+    parser.add_argument("--reports", default=True, help=argparse.SUPPRESS)
     parser.add_argument(
         "--no-reports",
         action="store_false",
@@ -356,6 +357,7 @@ def parse_args() -> argparse.Namespace:
         default=argparse.SUPPRESS,
         help="don't push reports to S3 and github",
     )
+    parser.add_argument("--push", default=True, help=argparse.SUPPRESS)
     parser.add_argument(
         "--no-push-images",
         action="store_false",

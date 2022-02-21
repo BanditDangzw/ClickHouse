@@ -408,6 +408,7 @@ def parse_args() -> argparse.Namespace:
         type=commit,
         help="commit create a release, default to HEAD",
     )
+    parser.add_argument("--with-prestable", default=True, help=argparse.SUPPRESS)
     parser.add_argument(
         "--no-prestable",
         dest="with_prestable",
@@ -416,6 +417,7 @@ def parse_args() -> argparse.Namespace:
         help=f"if set, for release types in {Release.BIG} skip creating prestable "
         "release and  release branch",
     )
+    parser.add_argument("--check-dirty", default=True, help=argparse.SUPPRESS)
     parser.add_argument(
         "--no-check-dirty",
         dest="check_dirty",
@@ -423,6 +425,7 @@ def parse_args() -> argparse.Namespace:
         default=argparse.SUPPRESS,
         help="(dangerous) if set, skip check repository for uncommited changes",
     )
+    parser.add_argument("--check-branch", default=True, help=argparse.SUPPRESS)
     parser.add_argument(
         "--no-check-branch",
         dest="check_branch",
